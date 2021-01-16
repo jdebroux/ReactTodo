@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import TodoApp from './TodoApp';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,7 +12,9 @@ ReactDOM.render(
       integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
       crossOrigin="anonymous"
     />
-    <TodoApp />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

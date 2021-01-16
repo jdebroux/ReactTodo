@@ -1,3 +1,125 @@
-.no-padding{
-  padding: 0px;
+.main-body {
+  /* background-color: rgba(0, 0, 0, 0.849); */
+  background: url(./images/woodGrainBackground.jpg);
+  height: 969px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.lineThroughText {
+  text-decoration: line-through;
+}
+
+.top-div-height {
+  height: 100px;
+}
+
+.todo-list {
+  opacity: 89%;
+  background-color: whitesmoke;
+  border-radius: 25px;
+  height: 600px;
+  overflow: auto;
+  margin: 0px;
+}
+
+.bottom-buttons {
+  opacity: 87%;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 110px;
+}
+
+.navbar-opacity {
+  opacity: 87%;
+}
+
+.centerDeleteButton {
+  padding-bottom: 20px;
+}
+
+.todo-item{
+  display: flex;
+  /* width: 90%; */
+  word-wrap: break-word;
+  /* justify-content: flex-start; */
+  align-items: center;
+  /* padding: 30px 20px 0; */
+  /* width: 70%; */
+  /* border-bottom: 1px solid #cecece; */
+  font-family: Roboto, sans-serif;
+  font-weight: 100;
+  font-size: 18px;
+  color: 333333;
+}
+
+input[type=checkbox]{
+  margin-right: 10px;
+  font-size: 30px;
+  /* margin-bottom: 15px; */
+}
+
+input[type=checkbox]:focus {
+  outline: 0;
+}
+
+thead th{
+  top: 0;
+  position: sticky;
+}
+
+th, td {
+  display: inline-block;
+  border-top: 0px !important;
+}
+
+.first-table-column {
+    width: 15%;
+}
+
+.second-table-column {
+    width: 70%;
+}
+
+
+.third-table-column {
+    width: 15%;
+}
+
+/* .tfoot-style {
+  opacity: 87%;
+  position: sticky;
+  bottom: 0;
+  background-color: black;
+  height: 50px;
+} */
+
+.table-striped {
+  margin-bottom: 0px !important;
+}
+
+table {
+  text-align: center;
+  position: relative;
+}
+
+tfoot,
+tfoot th,
+tfoot td {
+  width: 20%;
+  background-color: black;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  /* background: #666; */
+  /* color: #fff; */
+  z-index:4;
+}
+
+p {
+  margin-bottom: 0px !important;
 }
