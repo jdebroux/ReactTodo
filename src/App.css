@@ -1,7 +1,8 @@
 .main-body {
   /* background-color: rgba(0, 0, 0, 0.849); */
   background: url(./images/woodGrainBackground.jpg);
-  height: 969px;
+  height: 1100px;
+  overflow: hidden;
 }
 
 .center-text {
@@ -25,6 +26,10 @@
   margin: 0px;
 }
 
+.table-striped {
+  height: 600px;
+}
+
 .bottom-buttons {
   opacity: 87%;
   margin-left: 10px;
@@ -40,6 +45,16 @@
 
 .centerDeleteButton {
   padding-bottom: 20px;
+}
+
+.panel-header {
+  background-color: black;
+  color: whitesmoke;
+  font-family: Roboto, sans-serif;
+}
+
+.panel-header-text {
+  padding-top: 10px;
 }
 
 .todo-item{
@@ -90,14 +105,6 @@ th, td {
     width: 15%;
 }
 
-/* .tfoot-style {
-  opacity: 87%;
-  position: sticky;
-  bottom: 0;
-  background-color: black;
-  height: 50px;
-} */
-
 .table-striped {
   margin-bottom: 0px !important;
 }
@@ -110,6 +117,7 @@ table {
 tfoot,
 tfoot th,
 tfoot td {
+  opacity: 98%;
   width: 20%;
   background-color: black;
   position: -webkit-sticky;
@@ -122,4 +130,51 @@ tfoot td {
 
 p {
   margin-bottom: 0px !important;
+}
+
+.remove-top-bottom-padding {
+  padding-top: 0px !important; 
+  padding-bottom: 0px !important;
+}
+
+.center-loading {
+  padding-top: 25%
+}
+
+form {
+  font-family: Roboto, sans-serif;
+}
+
+
+
+.letter {
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  margin: 26px auto 0;
+  max-width: 550px;
+  min-height: 3000px;
+  padding: 24px;
+  position: relative;
+  width: 80%;
+}
+.letter:before, .letter:after {
+  content: "";
+  height: 98%;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+.letter:before {
+  background: #fafafa;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  left: -5px;
+  top: 4px;
+  transform: rotate(-2.5deg);
+}
+.letter:after {
+  background: #f6f6f6;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  right: -3px;
+  top: 1px;
+  transform: rotate(1.4deg);
 }
