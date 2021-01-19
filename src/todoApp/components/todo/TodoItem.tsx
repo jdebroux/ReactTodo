@@ -36,10 +36,16 @@ function TodoItem(props: any) {
             <td className="third-table-column">
 
             <button className="btn btn-danger btn-sm deleteTodo"
-                        onClick={() => props.deleteTodo(props.item.id)}
-                        >
-                        X
-                        </button>
+                    onClick={() => props.deleteTodo(props.item.id)}
+            >
+            X
+            </button>
+            &nbsp;|&nbsp;
+            <button className="btn btn-primary btn-sm deleteTodo"
+                    onClick={() => props.enterEditTodo(props.item)}
+            >
+            E
+            </button>
 
                 {/* {
                     !props.item.isNew

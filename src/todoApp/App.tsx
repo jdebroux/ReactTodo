@@ -11,7 +11,7 @@ import Home from './components/todo/Home';
 import TodoList from './components/todo/TodoList';
 import "../App.css"
 import ButtonBar from './components/buttonBar/ButtonBar';
-import todosData from '../data/todosData';
+// import todosData from '../data/todosData';
 import Profile from './components/userAccount/Profile';
 import Login from './components/userAccount/Login';
 
@@ -27,11 +27,12 @@ export default class App extends Component<{}, AppState> {
   constructor(props: any) {
     super(props)
     this.state = {
-      isLoggedIn: true,
+      isLoggedIn: false,
       isLoading: true,
-      todos: todosData
+      todos: []
     };
     this.setIsLoggedIn = this.setIsLoggedIn.bind(this);
+    this.logoutUser = this.logoutUser.bind(this);
     // this.searchTodos = this.searchTodos.bind(this);
   }
 
@@ -64,8 +65,14 @@ setIsLoggedIn(isLoggedIn: boolean) {
     }, 1500)
   }
 
-  componentWillUnmount = () => {
+  logoutUser() {
     localStorage.removeItem("credentials");
+    this.setIsLoggedIn(false)
+    console.log(this.state)
+  }
+
+  componentWillUnmount = () => {
+    this.logoutUser();
   }
 
   render() {
@@ -91,16 +98,22 @@ setIsLoggedIn(isLoggedIn: boolean) {
         <div className="row">
           <div className="col-lg-3"></div>
           <Switch>
-            <Route path="/notes">
-              <div className="col-lg-6">
-                {this.state.isLoading 
-                  ? <h1 className="center-text todo-list center-loading">Loading...</h1> 
-                  : <div className="row">
-                      <div className="col-lg-12 text-center">
-                        <TodoList todos={this.state.todos}/>
-                      </div>
-                    </div>}
-              </div>
+            <Route path="/tasks">
+              {
+                this.state.isLoggedIn
+                  ? <div className="col-lg-6">
+                      {
+                        this.state.isLoading 
+                          ? <h1 className="center-text todo-list center-loading">Loading...</h1> 
+                          : <div className="row">
+                              <div className="col-lg-12 text-center">
+                                <TodoList isLoggedIn={this.state.isLoggedIn}/>
+                              </div>
+                            </div>
+                      }
+                    </div>
+                  : <Redirect from="/tasks" to="/login" />
+              }
             </Route>
             <Route path="/home">
               <div className="col-lg-6 text-center">
@@ -108,19 +121,37 @@ setIsLoggedIn(isLoggedIn: boolean) {
               </div>
             </Route>
             <Route path="/profile">
-              <div className="col-lg-6 text-center">
-                <Profile setIsLoggedIn={this.setIsLoggedIn} isLoggedIn={this.state.isLoggedIn}/>
-              </div>
+              {
+                this.state.isLoggedIn
+                  ? <div className="col-lg-6 text-center">
+                      <Profile setIsLoggedIn={this.setIsLoggedIn} isLoggedIn={this.state.isLoggedIn}/>
+                    </div>
+                  : <Redirect from="/profile" to="/login" />
+              }
             </Route>
             <Route path="/login">
-              <div className="col-lg-6 text-center">
-                <Login page={"login"} setIsLoggedIn={this.setIsLoggedIn} isLoggedIn={this.state.isLoggedIn}/>
-              </div>
+              {
+                this.state.isLoggedIn
+                  ? <Redirect from="/login" to="/tasks" />
+                  : <div className="col-lg-6 text-center">
+                      <Login page={"login"} setIsLoggedIn={this.setIsLoggedIn} isLoggedIn={this.state.isLoggedIn}/>
+                    </div>
+              }
             </Route>
             <Route path="/register">
-              <div className="col-lg-6 text-center">
-                <Login page={"register"} setIsLoggedIn={this.setIsLoggedIn} isLoggedIn={this.state.isLoggedIn}/>
+              {
+                this.state.isLoggedIn
+                  ? <Redirect from="/register" to="/profile" />
+                  : <div className="col-lg-6 text-center">
+                      <Login page={"register"} setIsLoggedIn={this.setIsLoggedIn} isLoggedIn={this.state.isLoggedIn}/>
+                    </div>
+              }
+            </Route>
+            <Route path="/logout">
+              <div>
+                {this.logoutUser}
               </div>
+              <Redirect from="logout" to="/home" />
             </Route>
             <Redirect from="/" to="/home" />
           </Switch>

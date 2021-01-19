@@ -2,8 +2,8 @@ import axios from "axios";
 import { User } from "../../interfaces/User";
  
  // private baseUrl = environment.baseUrl;
- export const baseUrl = "http://localhost:4201/";
- export const noteUrl = baseUrl + "api/notes";
+ export const baseUrl = "http://localhost:8085/";
+ export const todoUrl = baseUrl + "api/todos";
  export const userUrl = baseUrl + "api/users";
 
 
@@ -25,7 +25,6 @@ export const getCredentials = () => {
         "X-Requested-With": "XMLHttpRequest",
       },
     };
-
   }
 
   export const checkLogin = () => {
@@ -53,4 +52,5 @@ export const getCredentials = () => {
     },
   };
   // create request to authenticate credentials
-  return axios.get<User>(baseUrl + "authenticate", httpOptions)}
+  return axios.get<User>(baseUrl + "authenticate", httpOptions)
+}

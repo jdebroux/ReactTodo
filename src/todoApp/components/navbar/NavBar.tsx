@@ -25,24 +25,35 @@ class NavBar extends Component <NavBarProps,{}>{
 
                         <div className="col-lg-2"></div>
 
-                        {this.props.isLoggedIn 
-                          ? <NavLink style={white} to="/profile">Profile</NavLink>
-                          : <NavLink style={white} to="/login">Login</NavLink>
+                        {
+                          this.props.isLoggedIn 
+                            ? <NavLink style={white} to="/profile">Profile</NavLink>
+                            : <NavLink style={white} to="/login">Login</NavLink>
                         }
 
                         <div className="col-lg-2"></div>
 
-                        {this.props.isLoggedIn 
-                          && <NavLink style={white} to="/notes">Notes</NavLink>
+                        {
+                          this.props.isLoggedIn 
+                            ? <NavLink style={white} to="/tasks">Tasks</NavLink>
+                            : <NavLink style={white} to="/register">Register</NavLink>
+                        }
+
+                        <div className="col-lg-2"></div>
+
+                        {
+                          this.props.isLoggedIn 
+                            && <NavLink style={white} to="/" onClick={() => this.props.setIsLoggedIn(false)}>Logout</NavLink>
                         }
 
                       </Nav>
-                      {this.props.isLoggedIn
-                        ?  <Form inline>
-                            <FormControl type="text" placeholder="Search Notes" className="mr-sm-2" />
-                            <Button variant="outline-light">Search</Button>
-                          </Form>
-                        : <Form inline></Form>
+                      { 
+                        this.props.isLoggedIn
+                          ? <Form inline>
+                              <FormControl type="text" placeholder="Search Notes" className="mr-sm-2" />
+                              <Button variant="outline-light">Search</Button>
+                            </Form>
+                          : <Form inline></Form>
                       }
                     </Navbar.Collapse>
                 </Navbar>
